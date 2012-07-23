@@ -18,14 +18,14 @@ def finish_search(kwargs):
 
 def notify(name, folder):
     print('Found %s in %s!' % (name, folder))
-    search_results.append(folder + '\\' + name)
+    search_results.append(os.path.join(folder, name))
 
 def search(kwargs):
     try:
         for folder, sub_folders, files in os.walk(kwargs['root'], followlinks=True):
             if kwargs['verbose']:
-                for sub_folder in sub_folders: print('%s\%s' % (folder, sub_folder))
-                for f in files: print('%s\%s' % (folder, f))
+                for sub_folder in sub_folders: print(os.path.join(folder, sub_folder))
+                for f in files: print(os.path.join(folder, f))
             if kwargs['mode'] == 'file':
                 if kwargs['name'] in files:
                     notify(kwargs['name'], folder)
