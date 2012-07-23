@@ -46,8 +46,11 @@ def search(kwargs):
 def validate_args(args):
     if len(args) > 1:
         if not os.path.exists(args[0]) or not os.path.isdir(args[0]):
-            args[0] = 'C:'
-        if len(args) > 2:
+            if 'linux' in sys.platform:
+		args[0] = os.path.sep
+            elif 'win' in sys.platform:
+                args[0] = os.path.join('C:', '')
+	if len(args) > 2:
             if not args[2] == 'file' and not args[2] == 'folder':
                 args[2] == 'any'
             if len(args) == 4:
