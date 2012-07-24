@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 
+######################
+#     Deprecated     #
+######################
+
 __author__ = 'Isaac Grant'
 
 import os, sys
