@@ -11,6 +11,7 @@ search_complete = False
 search_results = []
 
 def finish_search(kwargs):
+    print('\n\n')
     print('Search complete! %s results:' % len(search_results))
     for folder in search_results:
         print(folder)
