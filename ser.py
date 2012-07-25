@@ -15,9 +15,9 @@ def publish_results(results):
         print(result)
 
 def main(args):
+    print(INFO_STOP)
     if args['mode'] == 'ext':
         from Search import ExtSearch as ext_search
-        print(INFO_STOP)
         search = ext_search(args['root'], args['target'], args['verbose'])
     else:
         if not args['loose']:
