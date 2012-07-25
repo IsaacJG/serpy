@@ -39,8 +39,8 @@ class Parser:
                     else:
                         self.args[3] = False
                     if len(self.args) == 5:
-                        if self.args[4] in LOOSE_FLAGS:
-                            self.args[4] = LOOSE_FLAGS[0]
+                        if self.args[4] in self.LOOSE_FLAGS:
+                            self.args[4] = self.LOOSE_FLAGS[0]
                 else:
                     self.args.append(False)
             elif len(self.args) == 2:
@@ -57,5 +57,5 @@ class Parser:
         args['target'] = self.args[1]
         args['mode'] = self.args[2]
         args['verbose'] = self.args[3]
-        args['loose'] = True if self.args[4] == LOOSE_FLAGS[0] else False
+        args['loose'] = True if self.args[4] == self.LOOSE_FLAGS[0] else False
         return args
