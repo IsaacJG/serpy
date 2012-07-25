@@ -34,6 +34,7 @@ class Parser:
             sys.exit(1) # error code 1 is too few args
         
     def parse(self):
+        self.validate_args()
         args = {}
         args['root'] = self.args[0]
         args['target'] = self.args[1]
