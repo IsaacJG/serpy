@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from ArgParser import Parser
+from searchpy.ArgParser import Parser
 from sys import argv
 
 INFO_STOP = 'Press ctrl+c to stop the search at any time'
@@ -17,14 +17,14 @@ def publish_results(results):
 def main(args):
     print(INFO_STOP)
     if args['mode'] == 'ext':
-        from Search import ExtSearch as ext_search
+        from searchpy.Search import ExtSearch as ext_search
         search = ext_search(args['root'], args['target'], args['verbose'])
     else:
         if not args['loose']:
-            from Search import Search as reg_search
+            from searchpy.Search import Search as reg_search
             search = reg_search(args['root'], args['target'], args['mode'], args['verbose'])
         else:
-            from Search import LooseSearch as loose_search
+            from searchpy.Search import LooseSearch as loose_search
             search = loose_search(args['root'], args['target'], args['mode'], args['verbose'])
             
     search.search()
@@ -32,7 +32,7 @@ def main(args):
     if args['mode'] in LOOSE_COMPATIBLE_MODES and not args['loose']:
         choice = raw_input('Would you like to search again using the loose search method? [Y/n]')
         if choice in POSITIVE_CHOICES:
-            from Search import LooseSearch as loose_search
+            from searchpy.Search import LooseSearch as loose_search
             search = loose_search(args['root'], args['target'], args['mode'], args['verbose'])
             search.search()
             publish_results(search.results)
